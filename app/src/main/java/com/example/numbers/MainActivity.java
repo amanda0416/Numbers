@@ -20,6 +20,7 @@ import java.text.NumberFormat;
 public class MainActivity extends AppCompatActivity {
 
     private TextView number;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +31,23 @@ public class MainActivity extends AppCompatActivity {
         number = findViewById(R.id.num);
         FloatingActionButton fab = findViewById(R.id.fab);
         Button zero = findViewById(R.id.Zero);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                number.setText("0");
-                int i = 0;
-                i ++;
-                number.setText(i);
+                count++;
+                number.setText(String.valueOf(count));
+            }
+            public void reset(View view) {
+                count = 0;
+                number.setText(String.valueOf(count));
+            }
 
-            }
         });
-        zero.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                number.setText("0");
-            }
-        });
+
+       
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
