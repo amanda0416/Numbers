@@ -38,16 +38,15 @@ public class MainActivity extends AppCompatActivity {
                 count++;
                 number.setText(String.valueOf(count));
             }
-            public void reset(View view) {
-                count = 0;
-                number.setText(String.valueOf(count));
-            }
+
 
         });
 
-       
     }
-
+    public void reset(View view) {
+        count = 0;
+        number.setText(String.valueOf(count));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
