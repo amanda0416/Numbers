@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                number.setText("1");
-
-
-
+                number.setText("0");
+                int i = 0;
+                i ++;
+                number.setText(i);
 
             }
         });
