@@ -8,24 +8,32 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.TextureView;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-
+    String TAG = MainActivity.class.getSimpleName();
     private TextView number;
     int count;
+    int secret = new Random().nextInt(10)+1;
+    private ImageView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        result = findViewById(R.id.result_image);
+        Log.d(TAG,"secret" + secret);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         number = findViewById(R.id.num);
@@ -37,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 count++;
                 number.setText(String.valueOf(count));
+                result.setAlpha(1.0f);
+                result.setVisibility(View.VISIBLE);
+                if(count == secret){
+                    Toast.makeText(MainActivity.this,"BOOM!",Toast.LENGTH_LONG).show();
+                    result.setImageResource(R.drawable.scare);
+                }else{
+                    result.setImageResource(R.drawable.happy);
+                    result.animate().alpha(0.0f).setDuration(1200);
+                }
             }
 
 
